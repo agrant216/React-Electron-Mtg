@@ -74,24 +74,27 @@ table {
     width: 100%;
 
 }
-.pRow {
+.pCheck {
     /*display:none;*/
     cursor: pointer;
 }
-    .pRow:checked + .pRow label{
+    .pCheck:checked + .pCheck label{
         background-color:blueviolet;
     }
-.pRow label{
-    padding: 5px 0 5px 0;
-    border-bottom:solid;
-    cursor: pointer;
-    width:100%;
-}
 
+    .pLabel{
+        width:100%;
+        display:inline-block;
+        cursor:pointer;
+    }
+
+.pRow{
+    width:100%;
+    height:auto;
+}
 td {
     font-size:1.5rem;
     margin: 15px;
     padding: 10px 0 10px 0;
     border-bottom:solid;
-    cursor: pointer;
 }

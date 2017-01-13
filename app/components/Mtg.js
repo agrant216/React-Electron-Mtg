@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import styles from './Mtg.css';
 import users from  '../../resources/users.json';
+//import {PLAYER_INCREMENT, PLAYER_DECREMENT} from
 
 class Mtg extends Component {
     props: {
@@ -64,12 +65,31 @@ class PlayerList extends Component {
 }
 
 class PlayerRow extends Component {
+    constructor(props){
+        super(props);
+        this.state = {selected: false};
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event) {
+
+        this.setState({selected:event.target.checked});
+
+    }
+    
     render(){
         var userName = this.props.user;
+        console.log(userName + this.state.selected);
+        if(this.state.selected==true){
+            console.log("checked")
+        }
+        else console.log("unchecked");
         return(
-            <tr><td>
-            <label for="{userName}"><input className={styles.pRow} type="checkbox" name="{userName}"/>{userName}</label>
+            <tr className={styles.pRow}><td>
+            <label className={styles.pLabel}>
+                <input className={styles.pCheck} type="checkbox" checked={this.state.selected} onChange={this.handleChange}/>{userName}
+            </label>
             </td></tr>
             );
-    }
-   }
+            }
+  }
