@@ -1,16 +1,18 @@
 ﻿// @flow
-export const PLAYER_INCREMENT = 'PLAYER_INCREMENT';
-export const PLAYER_DECREMENT = 'PLAYER_DECREMENT';
+export const PLAYER_ADD = 'PLAYER_ADD';
+export const PLAYER_REMOVE = 'PLAYER_REMOVE';
 
-export function increment() {
+export function addPlayer(player) {
     return {
-        type: PLAYER_INCREMENT
+        type: PLAYER_ADD,
+        name:player
     };
 }
 
-export function decrement() {
+export function removePlayer(player) {
     return {
-        type: PLAYER_DECREMENT
+        type: PLAYER_REMOVE,
+        name: player
     };
 }
 
