@@ -15,21 +15,16 @@ function players(state = [], action){
                 action.name
             ]
         case PLAYER_REMOVE:
-            var players = [];
-            for(var i = 0;i < state.length-1; i++){
-                if(state[i]===action.name)
-                    continue;
-                else{
-                    players.push(state[i]);
-                }
-            }
+            var index = state.indexOf(action.name);
+            var players = state;
+            players.splice(index,1);
             return players;
         default:
             return state;
     }
 }
 
-function counter(state = 0, action: Object) {
+function counter(state = 0, action) {
     switch (action.type) {
         case PLAYER_ADD:
             return state + 1;

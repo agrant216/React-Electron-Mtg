@@ -2,21 +2,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import styles from './Mtg.css';
-import users from '../../resources/users.json';
+import PlayerList from './PlayerList'
 
 class Mtg extends Component {
-    props : {
-        addPlayer: () => void,
-        removePlayer: () => void
-    };
+    // props : {
+    //     addPlayer: () => void,
+    //     removePlayer: () => void
+    // };
     render() {
         const { addPlayer, removePlayer } = this.props;
         console.log(this.props);
-        console.log({addPlayer});
-        console.log(users);
-        for (var i = 0; i < users.length; i++) {
-            var names = users[i].Name;
-        }
+        //console.log(store.getState());
+        
         return (
             <div>
                 <div className={styles.backButton}>
@@ -35,8 +32,7 @@ class Mtg extends Component {
                     <button className={styles.btn}>Next</button>
                     <button className={styles.btn}>Add Player</button>
                     <div className={styles.btn_selected}>
-                        <span>Selected:
-                        </span>
+                        <span>Selected: </span>
                     </div>
                 </div>
 
@@ -46,66 +42,3 @@ class Mtg extends Component {
 }
 
 export default Mtg;
-
-class PlayerList extends Component {
-    props : {};
-
-    render() {
-        var rows = [];
-        var name;
-        for (var i = 0; i < users.length; i++) {
-            name = users[i].Name;
-            rows.push(<PlayerRow user={name} key={name}/>);
-        }
-        return (
-            <form>
-                <table>
-                    <tbody>{rows}</tbody>
-                </table>
-            </form>
-        );
-    }
-}
-class PlayerRow extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selected: false,
-            changed:false
-        };
-
-        this.handleChange = this
-            .handleChange
-            .bind(this);
-    }
-    handleChange(event) {
-        console.log(event.target.id);
-        this.setState({selected: event.target.checked,changed:true});
-    }
-
-    render() {
-        var userName = this.props.user;
-        console.log(userName + this.state.selected);
-        if(this.state.changed==true){
-            if (this.state.selected == true) {
-                console.log("checked");
-
-            } else 
-                console.log("unchecked");
-        }
-        return (
-            <tr className={styles.pRow}>
-                <td>
-                    <label className={styles.pLabel}>
-                        <input
-                            className={styles.pCheck}
-                            id={userName}
-                            type="checkbox"
-                            checked={this.state.selected}
-                            onChange={this.handleChange}/>{userName}
-                    </label>
-                </td>
-            </tr>
-        );
-    }
-}
