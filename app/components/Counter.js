@@ -4,13 +4,6 @@ import { Link } from 'react-router';
 import styles from './Counter.css';
 
 class Counter extends Component {
-  props: {
-    increment: () => void,
-    incrementIfOdd: () => void,
-    incrementAsync: () => void,
-    decrement: () => void,
-    counter: number
-  };
 
   render() {
     console.log(this.props);

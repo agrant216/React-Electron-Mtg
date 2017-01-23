@@ -10,7 +10,7 @@ import * as PlayerActions from '../actions/players';
 class Mtg extends Component {
 
     render() {
-        const { addPlayer, removePlayer } = this.props;
+        const { addPlayer, removePlayer, setPlayers } = this.props;
         console.log(this.props);
         
         return (
@@ -28,7 +28,7 @@ class Mtg extends Component {
                 </div>
 
                 <div className={styles.btnGroup}>
-                    <button className={styles.btn}>Next</button>
+                    <button className={styles.btn}><Link to="/modeSelect">Next</Link></button>
                     <button className={styles.btn}>Add Player</button>
                     <div className={styles.btn_selected}>
                         <span>Selected: </span>
@@ -42,7 +42,7 @@ class Mtg extends Component {
 
 function mapStateToProps(state) {
   return {
-    players: state.players
+    players: state.mtgApp.players
   };
 }
 function mapDispatchToProps(dispatch) {

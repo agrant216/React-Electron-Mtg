@@ -22,6 +22,7 @@ class PlayerList extends Component {
             name = users[i].Name;
             rows.push(<PlayerRow user={name} key={name} OnClick={OnClick}/>);
         }
+        console.log("Rendered List");
         return (
             <form>
                 <ul>
@@ -32,32 +33,27 @@ class PlayerList extends Component {
     }
 }
 class PlayerRow extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selected: false
-        };
+     constructor(props) {
+         super(props);
+         this.state = {
+             unselected: true,
+         };
 
-        this.handleChange = this
-            .handleChange
-            .bind(this);
-    }
-    handleChange(event) {
-        this.setState({selected: event.target.checked,changed:true});
-    }
+         this.handleChange = this
+             .handleChange
+             .bind(this);
+     }
+     handleChange(event) {
+         this.setState({unselected: !this.state.unselected});
+         console.log("set state")
+     }
 
     render() {
         var userName = this.props.user;
+        
         return (
-            <li className={styles.pRow} onClick={this.props.OnClick(this.state.selected, {userName})}>
-                    <label className={styles.pLabel}>
-                        <input
-                            className={styles.pCheck}
-                            id={userName}
-                            type="checkbox"
-                            checked={this.state.selected}
-                            onChange={this.handleChange}/>{userName}
-                    </label>
+            <li className={styles.pRow} onClick={()=>{{this.handleChange()};console.log(this.state.unselected);this.props.OnClick(this.state.unselected,{userName});}}>
+                <span className={styles.pLabel}>{userName}</span>
             </li>
             
         );

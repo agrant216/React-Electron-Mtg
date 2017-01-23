@@ -1,6 +1,6 @@
 ﻿// @flow
 import { combineReducers } from 'redux';
-import { PLAYER_ADD, PLAYER_REMOVE } from '../actions/players';
+import { PLAYER_ADD, PLAYER_REMOVE, SET_MODE } from '../actions/players';
 
 const initialState = {
     players: [],
@@ -19,9 +19,16 @@ function players(state = [], action){
             var players = state;
             players.splice(index,1);
             return players;
+
         default:
             return state;
     }
+}
+function mode(state='',action){
+    if(action.type == SET_MODE){
+        return action.mode;
+    }
+    else return state;
 }
 
 function counter(state = 0, action) {
@@ -35,6 +42,7 @@ function counter(state = 0, action) {
     }
 }
 const mtgApp = combineReducers({
-    players
+    players,
+    mode
 })
 export default mtgApp;
