@@ -11,7 +11,6 @@ class ModeSelectPage extends React.Component {
 
   }
   render() {
-    console.log(this.props);
     var Modes = ['Free', 'Commander', 'Game of Thrones', 'Team', 'Pentagram'];
     return(
     <div>
@@ -24,7 +23,7 @@ class ModeSelectPage extends React.Component {
         ModeSelectPage
         <div>
           <span>Mode Select:</span>
-          
+          <DisplayList data={Modes}/>
         </div>
         <div>
           <span>Selected Players:</span>
@@ -39,8 +38,6 @@ class ModeSelectPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("mode");
-  console.log(state.players);
   return {
     Mode: state.mtgApp.mode,
     players: state.mtgApp.players
