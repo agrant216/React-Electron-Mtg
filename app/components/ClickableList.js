@@ -33,5 +33,15 @@ class ClickableList extends Component {
         );
     }
 }
+class ClickableItem extends Component {
+
+    render() {
+
+        return(
+            <li onClick>{this.props.text}</li>
+        );
+    }
+
+}
 
 export default ClickableList;
