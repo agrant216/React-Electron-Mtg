@@ -18,9 +18,9 @@ export function removePlayer(player) {
     };
 }
 
-export function setMode(game) {
+export function setMode(mode) {
     return{
         type: SET_MODE,
-        mode: game
+        mode: mode
     };
 }

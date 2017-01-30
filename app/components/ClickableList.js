@@ -6,22 +6,23 @@ class ClickableList extends Component {
 
     render() {
         var rows = [];
-        var name;
+        var text;
         var selected = 0; //should be state
         var allowed = this.props.allowed;
         var OnClick = (selected, text) => {
-            
-            if(selected){
-                this.props.actions.addPlayer(player.userName);
-            }
-            else {
-                this.props.actions.removePlayer(player.userName);
+            if(selected.length == this.props.allowed){
+                if(selected){
+                    this.props.actions.addPlayer(player.userName);
+                }
+                else {
+                    this.props.actions.removePlayer(player.userName);
+                }
             }
         };
 
         for (var i = 0; i < users.length; i++) {
-            name = users[i].Name;
-            rows.push(<PlayerRow user={name} key={name} OnClick={OnClick}/>);
+            text = data[i];
+            rows.push(<ClickableItem user={name} key={name} onClick={OnClick}/>);
         }
         console.log("Rendered List");
         return (
@@ -38,7 +39,7 @@ class ClickableItem extends Component {
     render() {
 
         return(
-            <li onClick>{this.props.text}</li>
+            <li onClick={this.props.OnClick}>{this.props.text}</li>
         );
     }
 
