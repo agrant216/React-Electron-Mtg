@@ -50,9 +50,15 @@ class PlayerRow extends Component {
 
     render() {
         var userName = this.props.user;
-        
+        var style;
+        if(!this.state.unselected){
+            style = styles.pRowSelected;
+        }
+        else style = styles.pRow;
+        console.log(style);
         return (
-            <li className={styles.pRow} onClick={()=>{{this.handleChange()};console.log(this.state.unselected);this.props.OnClick(this.state.unselected,{userName});}}>
+            
+            <li className={style} onClick={()=>{{this.handleChange()};console.log(this.state.unselected);this.props.OnClick(this.state.unselected,{userName});}}>
                 <span className={styles.pLabel}>{userName}</span>
             </li>
             
