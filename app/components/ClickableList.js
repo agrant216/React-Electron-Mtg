@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import styles from './Mtg.css';
 import users from '../../resources/users.json';
 
-var style = {
-    
-}
-
 class ClickableList extends Component {
 
     render() {

@@ -20,6 +20,7 @@ class PlayerList extends Component {
         };
         for (var i = 0; i < users.length; i++) {
             name = users[i].Name;
+            if(this.props.players.indexOf(name))
             rows.push(<PlayerRow user={name} key={name} OnClick={OnClick}/>);
         }
         console.log("Rendered List");
