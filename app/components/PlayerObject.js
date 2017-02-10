@@ -10,6 +10,7 @@ class PlyerObject extends Component{
         return(
             <div>
                 <h1>{playerName}</h1>
+                <h2>{playerLife}</h2>
             </div>
         );
     }

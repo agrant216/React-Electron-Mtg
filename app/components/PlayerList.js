@@ -20,8 +20,15 @@ class PlayerList extends Component {
         };
         for (var i = 0; i < users.length; i++) {
             name = users[i].Name;
-            if(this.props.players.indexOf(name))
-            rows.push(<PlayerRow user={name} key={name} OnClick={OnClick}/>);
+            
+            if(this.props.actions.players.indexOf(name)!=-1){
+                console.log(1);
+                rows.push(<PlayerRow user={name} key={name} selected={true} OnClick={OnClick}/>);
+            }
+            else {
+                console.log(0);
+                rows.push(<PlayerRow user={name} key={name} selected={false} OnClick={OnClick}/>);
+            }
         }
         console.log("Rendered List");
         return (
@@ -37,7 +44,7 @@ class PlayerRow extends Component {
      constructor(props) {
          super(props);
          this.state = {
-             unselected: true,
+             unselected: !this.props.selected
          };
 
          this.handleChange = this
@@ -50,6 +57,7 @@ class PlayerRow extends Component {
      }
 
     render() {
+        console.log(this.state.unselected);
         var userName = this.props.user;
         var style;
         if(!this.state.unselected){
