@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import styles from './Mtg.css';
-import users from '../../resources/users.json';
 
 class ClickableList extends Component {
 
     render() {
         var rows = [];
         var text;
-        var selected = 0; //should be state
+        var selected = []; //should be state
         var allowed = this.props.allowed;
+        var data = this.props.data;
+        
         var OnClick = (selected, text) => {
-            if(selected.length == this.props.allowed){
+            if(selected.length < this.props.allowed){
                 if(selected){
                     this.props.actions.addPlayer(player.userName);
                 }
@@ -20,9 +21,9 @@ class ClickableList extends Component {
             }
         };
 
-        for (var i = 0; i < users.length; i++) {
+        for (var i = 0; i < data.length; i++) {
             text = data[i];
-            rows.push(<ClickableItem user={name} key={name} onClick={OnClick}/>);
+            rows.push(<ClickableItem text={text} key={text} selected={false} onClick={OnClick}/>);
         }
         console.log("Rendered List");
         return (
@@ -39,7 +40,7 @@ class ClickableItem extends Component {
     render() {
 
         return(
-            <li onClick={this.props.OnClick}>{this.props.text}</li>
+            <li onClick={()=>{this.props.OnClick(this.props.selected,this.props.text)}}>{this.props.text}</li>
         );
     }
 

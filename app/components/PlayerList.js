@@ -67,7 +67,7 @@ class PlayerRow extends Component {
         console.log(style);
         return (
             
-            <li className={style} onClick={()=>{{this.handleChange()};console.log(this.state.unselected);this.props.OnClick(this.state.unselected,{userName});}}>
+            <li className={style} onClick={()=>{{this.handleChange()};this.props.OnClick(this.state.unselected,{userName});}}>
                 <span className={styles.pLabel}>{userName}</span>
             </li>
             
