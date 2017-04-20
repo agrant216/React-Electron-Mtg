@@ -5,6 +5,7 @@ import DisplayList from '../components/DisplayList'
 import * as PlayerActions from '../actions/players';
 import styles from '../components/Mtg.css';
 import { Link } from 'react-router';
+import ClickableList from '../components/ClickableList'
 
 class ModeSelectPage extends React.Component {
   static propTypes = {
@@ -29,8 +30,10 @@ class ModeSelectPage extends React.Component {
           <span>Selected Players:</span>
           <DisplayList data={this.props.players}/>
         </div>
-
-
+        <div>
+          <span>ClickList</span>
+          <ClickableList data={Modes}/>
+        </div>
       </div>
     </div>
     );

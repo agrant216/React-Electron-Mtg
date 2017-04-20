@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import styles from './Mtg.css';
 
+//will be used exclusively for single select lists
 class ClickableList extends Component {
 
     render() {
         var rows = [];
         var text;
-        var selected = []; //should be state
+        var selected; //should be state
         var allowed = this.props.allowed;
         var data = this.props.data;
-        
+
         var OnClick = (selected, text) => {
-            if(selected.length < this.props.allowed){
+            console.log(CAlick)
+            if(selected == text){
                 if(selected){
                     this.props.actions.addPlayer(player.userName);
                 }
-                else {
-                    this.props.actions.removePlayer(player.userName);
-                }
+            else 
+                selected = text;
             }
         };
 
@@ -40,7 +41,7 @@ class ClickableItem extends Component {
     render() {
 
         return(
-            <li onClick={()=>{this.props.OnClick(this.props.selected,this.props.text)}}>{this.props.text}</li>
+            <li onClick={()=>{this.props.onClick(this.props.selected,this.props.text)}}>{this.props.text}</li>
         );
     }
 
